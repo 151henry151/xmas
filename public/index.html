@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>xmas — NYC Tree Vendor</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="auth-screen" class="panel">
+    <header class="title-block">
+      <h1>xmas</h1>
+      <p class="tagline">Romp Family Christmas Trees &amp; the city lots</p>
+      <p class="subtitle">Jane Street &amp; 8th Avenue · NYC · top-down season</p>
+    </header>
+    <div id="auth-tabs">
+      <button type="button" data-tab="login" class="active">Log in</button>
+      <button type="button" data-tab="register">Register</button>
+    </div>
+    <form id="auth-form">
+      <label>Username <input name="username" autocomplete="username" required minlength="2" /></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required minlength="4" /></label>
+      <label id="seller-pick" class="hidden">Character
+        <select name="sellerId"></select>
+      </label>
+      <p id="auth-error" class="error hidden"></p>
+      <button type="submit" class="primary">Enter the lot</button>
+    </form>
+    <p class="hint">WASD or arrows to walk · <kbd>E</kbd> interact at stands · sell trees Pokémon-style</p>
+  </div>
+
+  <div id="game-screen" class="hidden">
+    <canvas id="game" width="960" height="540"></canvas>
+    <aside id="hud">
+      <div id="hud-top">
+        <span id="hud-user"></span>
+        <span id="hud-stand"></span>
+        <span id="hud-cash"></span>
+      </div>
+      <div id="hud-season">
+        <span id="hud-sales"></span>
+        <span id="hud-good"></span>
+        <button type="button" id="btn-end-season" title="End season (need 5+ sales for a good season)">End season</button>
+      </div>
+      <p class="controls">Move: WASD / arrows · Interact: E · Players online: <span id="player-count">0</span></p>
+    </aside>
+    <div id="dialog" class="hidden">
+      <div class="dialog-box">
+        <p id="dialog-name" class="dialog-name"></p>
+        <p id="dialog-text"></p>
+        <div id="dialog-choices"></div>
+        <button type="button" id="dialog-close" class="hidden">Continue</button>
+      </div>
+    </div>
+    <div id="toast" class="hidden"></div>
+  </div>
+
+  <script src="socket.io/socket.io.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
