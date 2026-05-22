@@ -1,6 +1,6 @@
 # xmas
 
-Top-down NYC Christmas tree vendor game — play at **[hromp.com/xmas](https://hromp.com/xmas/)**.
+Top-down NYC Christmas tree vendor game — landing **[hromp.com/xmas-game](https://hromp.com/xmas-game/)**, play at **[hromp.com/xmas](https://hromp.com/xmas/)**.
 
 You are a tree seller working lots across Manhattan (simplified map). Walk with **WASD** or **arrow keys**, press **E** at a stand to start Pokémon-style sales dialogues. Win battles by persuading customers to buy. Compete and chat with other vendors at rival stands. After **three good seasons** (5+ tree sales each), unlock **Romp Family Christmas Trees** at Jane Street & 8th Avenue — the prestige “final boss” lot.
 
