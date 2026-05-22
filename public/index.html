@@ -11,7 +11,7 @@
     <header class="title-block">
       <h1>xmas</h1>
       <p class="tagline">Romp Family Christmas Trees &amp; the city lots</p>
-      <p class="subtitle">Jane Street &amp; 8th Avenue · NYC · top-down season</p>
+      <p class="subtitle">Jane Street &amp; 8th Avenue · multiplayer NYC season</p>
     </header>
     <div id="auth-tabs">
       <button type="button" data-tab="login" class="active">Log in</button>
@@ -26,24 +26,49 @@
       <p id="auth-error" class="error hidden"></p>
       <button type="submit" class="primary">Enter the lot</button>
     </form>
-    <p class="hint">WASD or arrows to walk · <kbd>E</kbd> interact at stands · sell trees Pokémon-style</p>
+    <p class="hint">WASD move · <kbd>E</kbd> interact · <kbd>T</kbd> chat · sell trees dialog-style</p>
   </div>
 
   <div id="game-screen" class="hidden">
-    <canvas id="game" width="960" height="540"></canvas>
-    <aside id="hud">
-      <div id="hud-top">
-        <span id="hud-user"></span>
-        <span id="hud-stand"></span>
-        <span id="hud-cash"></span>
-      </div>
-      <div id="hud-season">
-        <span id="hud-sales"></span>
-        <span id="hud-good"></span>
-        <button type="button" id="btn-end-season" title="End season (need 5+ sales for a good season)">End season</button>
-      </div>
-      <p class="controls">Move: WASD / arrows · Interact: E · Players online: <span id="player-count">0</span></p>
-    </aside>
+    <div class="game-layout">
+      <canvas id="game" width="1024" height="576"></canvas>
+      <aside id="hud">
+        <div id="hud-top">
+          <span id="hud-user"></span>
+          <span id="hud-stand"></span>
+          <span id="hud-cash"></span>
+          <span id="hud-stock"></span>
+          <span id="hud-day"></span>
+          <span id="hud-phase"></span>
+        </div>
+        <div id="hud-season">
+          <span id="hud-sales"></span>
+          <span id="hud-good"></span>
+        </div>
+        <div id="tutorial-box" class="tutorial-box">
+          <p id="tutorial-text"></p>
+          <button type="button" id="btn-tutorial" class="small">Next tip</button>
+        </div>
+        <div class="hud-actions">
+          <button type="button" id="btn-restock" class="action">Restock $175</button>
+          <button type="button" id="btn-rent" class="action">Pay rent</button>
+          <button type="button" id="btn-end-season" class="action accent">End season</button>
+        </div>
+        <div class="hud-section">
+          <h3>Upgrades</h3>
+          <div id="upgrade-list"></div>
+        </div>
+        <div class="hud-section chat-section">
+          <h3>Chat <span class="muted">(T)</span></h3>
+          <div id="chat-log"></div>
+          <div class="chat-input-row">
+            <input id="chat-input" type="text" maxlength="120" placeholder="Message…" />
+            <button type="button" id="chat-send">Send</button>
+          </div>
+        </div>
+        <p class="controls">Online: <span id="player-count">0</span> · Map shows Central Park, Times Sq, Jane St</p>
+      </aside>
+    </div>
     <div id="dialog" class="hidden">
       <div class="dialog-box">
         <p id="dialog-name" class="dialog-name"></p>

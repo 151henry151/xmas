@@ -1,59 +1,91 @@
 export const SELLERS = [
-  { id: 'rookie', name: 'Rookie Rick', bonus: 0, desc: 'Just learning the lot.' },
-  { id: 'hustler', name: 'Hustler Hank', bonus: 1, desc: '+1 persuasion on price talks.' },
-  { id: 'charmer', name: 'Charmer Carla', bonus: 1, desc: '+1 on friendly approaches.' },
-  { id: 'expert', name: 'Expert Eddie', bonus: 2, desc: 'Veteran closer from Queens lots.' },
+  { id: 'rookie', name: 'Rookie Rick', bonus: 0, desc: 'Learning the ropes on the sidewalk.' },
+  { id: 'hustler', name: 'Hustler Hank', bonus: 1, desc: '+1 on price and closing lines.' },
+  { id: 'charmer', name: 'Charmer Carla', bonus: 1, desc: '+1 on friendly and story beats.' },
+  { id: 'expert', name: 'Expert Eddie', bonus: 2, desc: 'Veteran closer; reads customers fast.' },
 ];
 
 export const CUSTOMERS = [
   {
     id: 'budget_mom',
     name: 'Budget Mom',
-    opening: 'I need something under eighty bucks that still looks full.',
-    hp: 4,
-    treePrice: 75,
+    opening: 'I need something under eighty bucks that still looks full for the kids.',
+    resistance: 70,
+    basePrice: 75,
+    prefer: 'budget',
   },
   {
     id: 'fancy_couple',
     name: 'Fancy Couple',
     opening: 'We want a Fraser fir — nothing droopy. Price is secondary.',
-    hp: 5,
-    treePrice: 180,
+    resistance: 85,
+    basePrice: 195,
+    prefer: 'premium',
   },
   {
     id: 'grumpy_local',
     name: 'Grumpy Local',
     opening: 'Every year you people block the sidewalk. Convince me.',
-    hp: 6,
-    treePrice: 95,
+    resistance: 90,
+    basePrice: 95,
+    prefer: 'classic',
   },
   {
     id: 'tourist',
     name: 'Lost Tourist',
-    opening: 'Is this a real New York Christmas tree? I need a photo op.',
-    hp: 4,
-    treePrice: 120,
+    opening: 'Is this a real New York Christmas tree? I need a photo for Instagram.',
+    resistance: 55,
+    basePrice: 130,
+    prefer: 'family',
   },
   {
     id: 'dog_owner',
     name: 'Dog Owner',
     opening: 'My husky sheds — will this tree survive apartment heat?',
-    hp: 5,
-    treePrice: 110,
+    resistance: 65,
+    basePrice: 110,
+    prefer: 'family',
   },
   {
     id: 'panic',
     name: 'Last-Minute Panic',
-    opening: 'Party in two hours. What have you got left?',
-    hp: 3,
-    treePrice: 140,
+    opening: 'Party in two hours! Walk-up on ten — no elevator!',
+    resistance: 50,
+    basePrice: 155,
+    prefer: 'family',
+  },
+  {
+    id: 'influencer',
+    name: 'TikTok Influencer',
+    opening: 'Need a tall asymmetrical tree for content. Got anything photogenic?',
+    resistance: 60,
+    basePrice: 175,
+    prefer: 'premium',
+  },
+  {
+    id: 'landlord',
+    name: 'Building Super',
+    opening: 'Co-op board allows max six feet and no flocking in the lobby.',
+    resistance: 75,
+    basePrice: 140,
+    prefer: 'classic',
+  },
+  {
+    id: 'charity',
+    name: 'Church Volunteer',
+    opening: 'Buying for the shelter — five trees, tight budget, big hearts.',
+    resistance: 80,
+    basePrice: 60,
+    prefer: 'budget',
+    bulk: true,
   },
   {
     id: 'romp_inspector',
     name: 'Romp Quality Inspector',
     opening: 'Romp Family standards: show me you belong on Jane Street.',
-    hp: 8,
-    treePrice: 250,
+    resistance: 100,
+    basePrice: 280,
+    prefer: 'premium',
     bossOnly: true,
   },
 ];
@@ -73,10 +105,9 @@ export function pickCustomer(standId, isBossStand) {
     if (c.bossOnly) return isBossStand;
     return !c.bossOnly;
   });
-  return pool[Math.floor(Math.random() * pool.length)];
+  return { ...pool[Math.floor(Math.random() * pool.length)] };
 }
 
 export function pickVendor(standId) {
-  const v = VENDOR_NPCS.find((n) => n.standId === standId);
-  return v || VENDOR_NPCS[0];
+  return VENDOR_NPCS.find((n) => n.standId === standId) || VENDOR_NPCS[0];
 }
